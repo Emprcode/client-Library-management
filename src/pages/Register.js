@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { InputFields } from "../components/InputFields.js";
 import { Layout } from "../components/layout/Layout";
+import { createUser } from "../helpers/axiosHelper.js";
 
 export const Register = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({});
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleOnDelete = async (e) => {
+    e.preventDefault();
+
+    const { confirmPassword, ...rest } = formData;
+
+    if (confirmPassword !== rest.password) {
+      return toast.error("Password does not match!");
+    }
+
+    const { status, message } = await createUser(rest);
+    toast[status](message);
+
+    status === "success" && navigate("/");
+  };
   const inputFields = [
     {
       label: "First Name",
@@ -58,14 +86,14 @@ export const Register = () => {
           </Col>
           <Col className="md-6 bg-warning p-5 rounded">
             <div className="bg-light p-4 rounded">
-              <Form>
+              <Form onSubmit={handleOnDelete}>
                 <h2>Register</h2>
                 <hr />
                 {inputFields.map((item, i) => (
-                  <InputFields key={i} {...item} />
+                  <InputFields key={i} {...item} onChange={handleOnChange} />
                 ))}
                 <Form.Group className="mb-3">
-                  <Form.Select name="role" required>
+                  <Form.Select name="role" required onChange={handleOnChange}>
                     <option value="">Select your role</option>
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
