@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Row, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Layout } from "../components/layout/Layout";
 import { loginUser } from "../helpers/axiosHelper";
@@ -11,6 +11,7 @@ const initialState = {
 };
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
 
   const handleOnChange = (e) => {
@@ -26,6 +27,7 @@ export const Login = () => {
     if (status === "success") {
       toast[status](message);
       sessionStorage.setItem("user", JSON.stringify(user));
+      navigate("/books");
     } else {
       toast[status](message);
     }

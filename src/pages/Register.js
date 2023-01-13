@@ -19,7 +19,7 @@ export const Register = () => {
     });
   };
 
-  const handleOnDelete = async (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     const { confirmPassword, ...rest } = formData;
@@ -86,7 +86,7 @@ export const Register = () => {
           </Col>
           <Col className="md-6 bg-warning p-5 rounded">
             <div className="bg-light p-4 rounded">
-              <Form onSubmit={handleOnDelete}>
+              <Form onSubmit={handleOnSubmit}>
                 <h2>Register</h2>
                 <hr />
                 {inputFields.map((item, i) => (
