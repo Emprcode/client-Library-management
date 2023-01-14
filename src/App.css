@@ -89,7 +89,7 @@ aside{
 
 .add-top{
     display: flex;
-    justify-content: end;
+    justify-content: flex-start;
 }
 .add-top h1{
     color: black;
@@ -102,4 +102,13 @@ aside{
 }
 .add-bottom label{
     font-weight: 500;
+}
+
+
+.book-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }

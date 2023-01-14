@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, Button, Col, Spinner } from "react-bootstrap";
 import { DashBoardLayout } from "../components/layout/DashBoardLayout";
 import book from "../assets/books.png";
+import { addBook } from "../helpers/axiosHelper";
+import { toast } from "react-toastify";
 
 export const AddBooks = () => {
   const [formData, setFormData] = useState({});
@@ -15,12 +17,15 @@ export const AddBooks = () => {
       [name]: value,
     });
   };
-  console.log(formData);
+  // console.log(formData);
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-
     setIsLoading(true);
+
+    const { status, message } = await addBook(formData);
+    toast[status](message);
+    setIsLoading(false);
   };
 
   return (
@@ -28,6 +33,7 @@ export const AddBooks = () => {
       <div className="add">
         <div className="add-top">
           <h1>Add New Book</h1>
+          <hr />
         </div>
         <div className="add-bottom">
           <Col md={7} className="d-none d-sm-block rounded">
