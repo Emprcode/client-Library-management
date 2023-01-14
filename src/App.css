@@ -77,3 +77,29 @@ aside{
     align-items: center;
     gap: 0.5rem;
 }
+.content{
+    min-height: 10vh;
+}
+
+.add .add-top,.add-bottom{
+    padding: 2rem;
+    margin: 20px;
+    box-shadow: rgba(4, 244, 188, 0.845);
+}
+
+.add-top{
+    display: flex;
+    justify-content: end;
+}
+.add-top h1{
+    color: black;
+    font-size: 1.5rem;
+}
+
+.add-bottom{
+    display: flex;
+    justify-content:flex-end;
+}
+.add-bottom label{
+    font-weight: 500;
+}

@@ -26,7 +26,7 @@ export const Sidebar = () => {
           <Link to="/books/add" className="link">
             <li>
               <i className="fa-solid fa-book"></i>
-              <span>Add books</span>
+              <span>Add Books</span>
             </li>
           </Link>
           <Link to="/transaction" className="link">
