@@ -92,3 +92,99 @@ export const getBooks = async () => {
     };
   }
 };
+
+export const BorrowBook = async (bookId) => {
+  try {
+    const userId = getUserFromSessionStorage();
+
+    if (!userId) {
+      return {
+        status: "error",
+        message: "please login first",
+      };
+    }
+
+    const { data } = await axios.post(
+      bookEp + "/borrow",
+      { bookId },
+      { headers: { Authorization: userId } }
+    );
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+export const deleteBook = async (bookId) => {
+  try {
+    const userId = getUserFromSessionStorage();
+
+    if (!userId) {
+      return {
+        status: "error",
+        message: "please login first",
+      };
+    }
+
+    const { data } = await axios.delete(bookEp, {
+      data: { bookId },
+      headers: { Authorization: userId },
+    });
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+export const getBorrowedBooks = async () => {
+  try {
+    const userId = getUserFromSessionStorage();
+
+    if (!userId) {
+      return {
+        status: "error",
+        message: "please login first",
+      };
+    }
+    const { data } = await axios.get(bookEp + "/borrowedByUser", {
+      headers: { Authorization: userId },
+    });
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+export const returnBook = async (bookId) => {
+  try {
+    const userId = getUserFromSessionStorage();
+
+    if (!userId) {
+      return {
+        status: "error",
+        message: "please login first",
+      };
+    }
+
+    const { data } = await axios.patch(
+      bookEp + "/return",
+      { bookId },
+      { headers: { Authorization: userId } }
+    );
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};

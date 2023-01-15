@@ -20,7 +20,7 @@ export const Header = () => {
     navigate("/");
   };
   return (
-    <Navbar bg="warning" expand="md">
+    <Navbar bg="warning" expand="md" className="fw-bold">
       <Container>
         <Navbar.Brand href="#home">MY LIBRARY</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

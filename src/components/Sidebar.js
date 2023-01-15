@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import books from "../assets/books.png";
 
-export const Sidebar = () => {
+export const Sidebar = ({user}) => {
   return (
     <aside>
       <div className="top ">
@@ -23,7 +23,9 @@ export const Sidebar = () => {
               <span>My Books</span>
             </li>
           </Link>
-          <Link to="/books/add" className="link">
+
+          {user?.role === "teacher" &&(
+<> <Link to="/books/add" className="link">
             <li>
               <i className="fa-solid fa-book"></i>
               <span>Add Books</span>
@@ -35,6 +37,10 @@ export const Sidebar = () => {
               <span>Transactions</span>
             </li>
           </Link>
+</>
+
+          )}
+         
           <h5 className="title">User</h5>
           <Link to="/profile" className="link">
             <li>
