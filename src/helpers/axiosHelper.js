@@ -7,6 +7,7 @@ const baseEpUrl =
 
 const userEp = baseEpUrl + "/user";
 const bookEp = baseEpUrl + "/book";
+const transactionEp = baseEpUrl + "/transaction";
 
 // USER
 const getUserFromSessionStorage = () => {
@@ -180,6 +181,29 @@ export const returnBook = async (bookId) => {
       { bookId },
       { headers: { Authorization: userId } }
     );
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+export const getAllTransactions = async () => {
+  try {
+    const userId = getUserFromSessionStorage();
+
+    if (!userId) {
+      return {
+        status: "error",
+        message: "please login first",
+      };
+    }
+
+    const { data } = await axios.get(transactionEp, {
+      headers: { Authorization: userId },
+    });
     return data;
   } catch (error) {
     return {
