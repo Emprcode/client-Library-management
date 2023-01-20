@@ -7,6 +7,7 @@ import { Books } from "./pages/Books";
 import { AddBooks } from "./pages/AddBooks";
 import { MyBooks } from "./pages/MyBooks";
 import { Transactions } from "./pages/Transactions";
+import { Profile } from "./pages/Profile";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/books/add" element={<AddBooks />} />
           <Route path="/mybooks" element={<MyBooks/>} />
           <Route path="transaction" element={<Transactions/>} />
+          <Route path="/profile" element={<Profile/>}/>
 
           {/* <Route path="/" element={<Login />}
           <Route path="/dashboard" element={<DashBoard />} /> */}

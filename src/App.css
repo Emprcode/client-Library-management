@@ -112,3 +112,8 @@ aside{
     gap: 2rem;
     flex-wrap: wrap;
 }
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

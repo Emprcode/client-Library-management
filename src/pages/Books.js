@@ -16,7 +16,7 @@ export const Books = () => {
   const fetchBooks = async () => {
     const response = await getBooks();
     setBooks(response.books);
-    console.log(response);
+    // console.log(response);
   };
 
   useEffect(() => {

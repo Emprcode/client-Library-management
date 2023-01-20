@@ -5,8 +5,16 @@ import book from "../assets/books.png";
 import { addBook } from "../helpers/axiosHelper";
 import { toast } from "react-toastify";
 
+const initialState = {
+  title:"",
+  author:"",
+  isbn:"",
+  year:"",
+  thumbnail:""
+}
+
 export const AddBooks = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleOnChange = (e) => {
@@ -89,7 +97,7 @@ export const AddBooks = () => {
               <Form.Group className="mb-2">
                 <Form.Label>Thumbnail</Form.Label>
                 <Form.Control
-                  placeholder="image"
+                  placeholder="image address"
                   type="text"
                   name="thumbnail"
                   required

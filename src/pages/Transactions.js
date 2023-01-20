@@ -44,7 +44,11 @@ export const Transactions = () => {
                   </td>
                   <td>{transaction.borrowedBook?.title}</td>
                   <td>{transaction.borrowedBook?.author}</td>
-                  <td>{transaction.borrowedBy}</td>
+                  <td>
+                    {transaction.borrowedBy?.userFname +
+                      " " +
+                      transaction.borrowedBy?.userLname}
+                  </td>
                   <td>
                     {new Date(transaction.createdAt).toLocaleDateString()}
                   </td>
