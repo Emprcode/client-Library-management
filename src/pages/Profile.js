@@ -22,7 +22,7 @@ export const Profile = () => {
       [name]: value,
     });
   };
-  console.log(updatePassword);
+  //   console.log(updatePassword);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -59,6 +59,7 @@ export const Profile = () => {
                   type="password"
                   name="currentPassword"
                   placeholder="Enter your current password"
+                  value={updatePassword.currentPassword}
                   onChange={handleOnPassChange}
                 />
               </Form.Group>
@@ -66,8 +67,9 @@ export const Profile = () => {
                 <Form.Label>New Password</Form.Label>
                 <Form.Control
                   type="password"
-                  name="newPassword"
+                  name="password"
                   placeholder="Enter a password"
+                  value={updatePassword.Password}
                   onChange={handleOnPassChange}
                 />
               </Form.Group>
@@ -77,6 +79,7 @@ export const Profile = () => {
                   type="password"
                   name="confirmPassword"
                   placeholder="Confirm your new password"
+                  value={updatePassword.confirmPassword}
                   onChange={handleOnPassChange}
                 />
               </Form.Group>
